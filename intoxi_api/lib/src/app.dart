@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'animes/sample_item_details_view.dart';
-import 'animes/sample_item_list_view.dart';
+import 'animes/view/sample_item_details_view.dart';
+import 'animes/view/sample_item_list_view.dart';
 
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
