@@ -3,8 +3,6 @@ import 'dart:convert';
 import '../helpers/errors/errors.dart';
 import '../models/models.dart';
 
-import 'mappers.dart';
-
 class AnimeImageMapper {
   static AnimeImage fromMap(Map<String, dynamic> map) {
     try {
