@@ -1,22 +1,22 @@
 import 'package:equatable/equatable.dart';
-import 'package:intoxi_api/src/animes/models/anime_model.dart';
+import 'package:intoxi_api/src/animes/models/anime.dart';
 
 enum AnimeStatus { initial, success, failure }
 
 class AnimeState extends Equatable {
   final AnimeStatus? status;
-  final List<AnimeModel>? animes;
+  final List<Anime>? animes;
   final bool? hasReachedMax;
 
   const AnimeState({
     this.status = AnimeStatus.initial,
-    this.animes = const <AnimeModel>[],
+    this.animes = const <Anime>[],
     this.hasReachedMax = false,
   });
 
   AnimeState copyWith({
     AnimeStatus? status,
-    List<AnimeModel>? animes,
+    List<Anime>? animes,
     bool? hasReachedMax,
   }) {
     return AnimeState(
