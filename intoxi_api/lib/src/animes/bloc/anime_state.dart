@@ -1,36 +1,46 @@
 import 'package:equatable/equatable.dart';
 import 'package:intoxi_api/src/animes/models/anime.dart';
 
-enum AnimeStatus { initial, success, failure }
+abstract class AnimeState extends Equatable {}
 
-class AnimeState extends Equatable {
-  final AnimeStatus? status;
+class AnimeStateFailure extends AnimeState {
+  final String message;
+
+  AnimeStateFailure(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class AnimeStateSucess extends AnimeState {
   final List<Anime>? animes;
   final bool? hasReachedMax;
 
-  const AnimeState({
-    this.status = AnimeStatus.initial,
-    this.animes = const <Anime>[],
+  AnimeStateSucess({
+    required this.animes,
     this.hasReachedMax = false,
   });
 
-  AnimeState copyWith({
-    AnimeStatus? status,
+  AnimeStateSucess copyWith({
     List<Anime>? animes,
     bool? hasReachedMax,
   }) {
-    return AnimeState(
-      status: status ?? this.status,
+    return AnimeStateSucess(
       animes: animes ?? this.animes,
       hasReachedMax: hasReachedMax ?? this.hasReachedMax,
     );
   }
 
   @override
-  String toString() {
-    return '''AnimeState { status: $status, hasReachedMax: $hasReachedMax, posts: ${animes?.length} }''';
-  }
+  List<Object?> get props => [animes, hasReachedMax];
+}
 
+class AnimeStateLoad extends AnimeState {
   @override
-  List<Object?> get props => [status, animes, hasReachedMax];
+  List<Object?> get props => [];
+}
+
+class AnimeStateInitial extends AnimeState {
+  @override
+  List<Object?> get props => [];
 }
