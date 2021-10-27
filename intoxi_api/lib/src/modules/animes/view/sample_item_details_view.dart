@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 /// Displays detailed information about a SampleItem.
 class AnimeDetailsView extends StatelessWidget {
-  const AnimeDetailsView({Key? key}) : super(key: key);
+  const AnimeDetailsView({Key? key, this.animeDescription}) : super(key: key);
+  final String? animeDescription;
 
   static const routeName = '/anime_item';
 
@@ -12,8 +13,8 @@ class AnimeDetailsView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Detalhes do anime'),
       ),
-      body: const Center(
-        child: Text('Text'),
+      body: Center(
+        child: Text("$animeDescription!"),
       ),
     );
   }

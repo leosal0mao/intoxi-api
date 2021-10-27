@@ -63,12 +63,12 @@ class AnimesListView extends StatelessWidget {
                           animeId: state.animes![index].id.toString(),
                           animeImage: state.animes![index].data.ogImage[0].url,
                           animeTitle: state.animes![index].data.ogTitle,
-                          onTap: () {
-                            Navigator.restorablePushNamed(
-                              context,
-                              AnimeDetailsView.routeName,
-                            );
-                          },
+                          // onTap: () {
+                          //   Navigator.restorablePushNamed(
+                          //     context,
+                          //     AnimeDetailsView.routeName,
+                          //   );
+                          // },
                         );
                       });
 
