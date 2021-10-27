@@ -10,7 +10,7 @@ class AnimeMapper {
     try {
       return Anime(
         id: map['id'],
-        data: AnimeDataMapper.fromMap(map['data']),
+        data: AnimeDataMapper.fromMap(map['yoast_head_json']),
       );
     } catch (e, stack) {
       throw AnimeMapperErrors(e.toString(), stack);
@@ -23,14 +23,6 @@ class AnimeMapper {
         'id': anime.id,
         'data': AnimeDataMapper.toMap(anime.data),
       };
-    } catch (e, stack) {
-      throw AnimeMapperErrors(e.toString(), stack);
-    }
-  }
-
-  Anime fromJson(String source) {
-    try {
-      return fromMap(json.decode(source));
     } catch (e, stack) {
       throw AnimeMapperErrors(e.toString(), stack);
     }

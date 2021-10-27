@@ -1,18 +1,18 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intoxi_api/src/animes/data/anime_repository_impl.dart';
-
-import 'animes/bloc/anime_bloc.dart';
-import 'animes/view/sample_item_details_view.dart';
-import 'animes/view/animes_list_view.dart';
 
 import 'core/endpoints/intoxi_anime_url.dart';
 import 'core/http/http_adapter_impl.dart';
-import 'settings/settings_controller.dart';
-import 'settings/settings_view.dart';
+import 'modules/animes/bloc/anime_bloc.dart';
+import 'modules/animes/data/anime_repository_impl.dart';
+import 'modules/animes/view/animes_list_view.dart';
+import 'modules/animes/view/sample_item_details_view.dart';
+import 'modules/settings/settings_controller.dart';
+import 'modules/settings/settings_view.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -27,8 +27,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
+        RepositoryProvider(create: (context) => Dio()),
         RepositoryProvider(
-            create: (_) => HttpAdapterImpl(IntoxiAnimeUrl.restRoute)),
+            create: (context) =>
+                HttpAdapterImpl(IntoxiAnimeUrl.restRoute, context.read<Dio>())),
         RepositoryProvider(
             create: (context) =>
                 AnimeRepositoryImpl(client: context.read<HttpAdapterImpl>())),

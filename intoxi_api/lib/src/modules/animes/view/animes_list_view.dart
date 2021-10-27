@@ -3,14 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:intoxi_api/src/animes/bloc/anime_bloc.dart';
-import 'package:intoxi_api/src/animes/bloc/anime_event.dart';
-import 'package:intoxi_api/src/animes/bloc/anime_state.dart';
-import 'package:intoxi_api/src/animes/dtos/anime_dto.dart';
-import 'package:intoxi_api/src/animes/widgets/anime_tile.dart';
-
 import '../../settings/settings_view.dart';
+import '../bloc/anime_bloc.dart';
+import '../bloc/anime_event.dart';
+import '../bloc/anime_state.dart';
+import '../dtos/anime_dto.dart';
 import '../models/models.dart';
+import '../widgets/anime_tile.dart';
 import 'sample_item_details_view.dart';
 
 class AnimesListView extends StatelessWidget {
@@ -18,7 +17,6 @@ class AnimesListView extends StatelessWidget {
     Key? key,
     required this.controller,
     this.animes,
-    this.animes2,
   }) : super(key: key);
 
   static const routeName = '/';
@@ -26,18 +24,6 @@ class AnimesListView extends StatelessWidget {
   final StreamController<int> controller;
   final List<Anime>? animes;
   var counter = 0;
-  List<Anime>? animes2 = [
-    Anime(
-        id: 1,
-        data: AnimeData(
-            ogTitle: 'test',
-            ogDescription: 'test',
-            ogImage: AnimeImage(
-              height: 10,
-              width: 10,
-              url: '',
-            )))
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +61,7 @@ class AnimesListView extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         return AnimeListTile(
                           animeId: state.animes![index].id.toString(),
-                          animeImage: state.animes![index].data.ogImage.url,
+                          animeImage: state.animes![index].data.ogImage[0].url,
                           animeTitle: state.animes![index].data.ogTitle,
                           onTap: () {
                             Navigator.restorablePushNamed(

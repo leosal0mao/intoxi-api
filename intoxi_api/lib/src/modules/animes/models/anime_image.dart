@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class AnimeImage extends Equatable {
-  final double width;
-  final double height;
+  final num width;
+  final num height;
   final String url;
   const AnimeImage({
     required this.width,

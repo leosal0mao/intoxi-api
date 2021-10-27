@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:intoxi_api/src/animes/dtos/anime_dto.dart';
+import '../dtos/dtos.dart';
 
 abstract class AnimeEvent extends Equatable {}
 

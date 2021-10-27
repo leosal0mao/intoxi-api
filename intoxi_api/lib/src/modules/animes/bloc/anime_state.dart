@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:intoxi_api/src/animes/models/anime.dart';
+import '../models/models.dart';
 
 abstract class AnimeState extends Equatable {}
 
