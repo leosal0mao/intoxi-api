@@ -18,7 +18,8 @@ class HttpAdapterImpl implements HttpAdapter {
       final response = await http.get(dataUrl, headers: headers);
       final responseJson = jsonDecode(response.body);
 
-      return ResponseData(response.statusCode.toString(), responseJson);
+      return ResponseData(
+          response.statusCode.toString(), responseJson.toString());
     } catch (e, stack) {
       throw HttpError(e.toString(), stack);
     }

@@ -35,4 +35,12 @@ class AnimeMapper {
       throw AnimeMapperErrors(e.toString(), stack);
     }
   }
+
+  List<Anime> fromListMap({required List<Map<String, dynamic>> maps}) {
+    try {
+      return maps.map((map) => fromMap(map)).toList();
+    } catch (e, stack) {
+      throw AnimeImageMapperErrors(e.toString(), stack);
+    }
+  }
 }
