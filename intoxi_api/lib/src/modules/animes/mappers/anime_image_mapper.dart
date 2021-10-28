@@ -36,9 +36,9 @@ class AnimeImageMapper {
     }
   }
 
-  static List<AnimeImage> fromListMap(List<Map<String, dynamic>> maps) {
+  static List<AnimeImage>? fromListMap(List<Map<String, dynamic>>? maps) {
     try {
-      return maps.map((map) => fromMap(map)).toList();
+      return maps?.map((map) => fromMap(map)).toList();
     } catch (e, stack) {
       throw AnimeImageMapperErrors(e.toString(), stack);
     }

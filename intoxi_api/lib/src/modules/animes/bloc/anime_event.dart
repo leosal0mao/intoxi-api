@@ -11,3 +11,12 @@ class AnimeFetched extends AnimeEvent {
   @override
   List<Object> get props => [params];
 }
+
+class AnimePaginate extends AnimeEvent {
+  final AnimeDto params;
+
+  AnimePaginate(this.params);
+
+  @override
+  List<Object> get props => [params];
+}

@@ -1,5 +1,10 @@
 import '../../helpers/errors.dart';
 
 class HttpError extends Failure {
-  HttpError(String message, StackTrace stackTrace) : super(message, stackTrace);
+  String? statusCode;
+  HttpError({
+    String? message,
+    StackTrace? stackTrace,
+    this.statusCode,
+  }) : super(message!, stackTrace!);
 }

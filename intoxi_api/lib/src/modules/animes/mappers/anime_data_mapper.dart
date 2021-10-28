@@ -12,22 +12,10 @@ class AnimeDataMapper {
         ogTitle: map['og_title'],
         ogDescription: map['og_description'],
         ogImage: AnimeImageMapper.fromListMap(
-            (map['og_image'] as List).cast<Map<String, dynamic>>()),
+            (map['og_image'] as List?)?.cast<Map<String, dynamic>>()),
       );
-    } catch (e, stack) {
-      throw AnimeDataMapperErrors(e.toString(), stack);
-    }
-  }
-
-  static Map toMap(AnimeData animeDataModel) {
-    try {
-      return {
-        'og_title': animeDataModel.ogTitle,
-        'og_description': animeDataModel.ogDescription,
-        'og_image': animeDataModel.ogImage
-            .map((e) => AnimeImageMapper.toMap(e))
-            .toList(),
-      };
+    } on AnimeImageMapperErrors catch (e) {
+      rethrow;
     } catch (e, stack) {
       throw AnimeDataMapperErrors(e.toString(), stack);
     }

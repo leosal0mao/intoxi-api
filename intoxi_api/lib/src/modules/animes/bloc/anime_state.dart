@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../models/models.dart';
 
 abstract class AnimeState extends Equatable {}
@@ -14,20 +15,24 @@ class AnimeStateFailure extends AnimeState {
 
 class AnimeStateSucess extends AnimeState {
   final List<Anime>? animes;
-  final bool? hasReachedMax;
+  final bool hasReachedMax;
+  final bool isLoading;
 
   AnimeStateSucess({
     required this.animes,
     this.hasReachedMax = false,
+    this.isLoading = false,
   });
 
   AnimeStateSucess copyWith({
     List<Anime>? animes,
     bool? hasReachedMax,
+    bool? isLoading,
   }) {
     return AnimeStateSucess(
       animes: animes ?? this.animes,
       hasReachedMax: hasReachedMax ?? this.hasReachedMax,
+      isLoading: isLoading ?? this.isLoading,
     );
   }
 

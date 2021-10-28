@@ -6,6 +6,13 @@ class AnimeDto extends Equatable {
 
   const AnimeDto(this.page, this.itemsPerPage);
 
+  AnimeDto copyWith({int? page, int? itemsPerPage}) {
+    return AnimeDto(
+      page ?? this.page,
+      itemsPerPage ?? this.itemsPerPage,
+    );
+  }
+
   Map<String, String> toMap() => {
         'page': page.toString(),
         'per_page': itemsPerPage.toString(),

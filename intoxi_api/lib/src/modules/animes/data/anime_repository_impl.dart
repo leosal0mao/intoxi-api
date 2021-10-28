@@ -21,6 +21,13 @@ class AnimeRepositoryImpl implements AnimeRepository {
     try {
       final animesResponse = await client.get(queries: params.toMap());
 
+      // if (animesResponse.statusCode == '400') {
+      //   return left(AnimeRepositoryError(
+      //     message: 'Erro na listagem',
+      //     stackTrace: StackTrace.current,
+      //   ));
+      // }
+
       final animes = (animesResponse.data as List).cast<Map<String, dynamic>>();
 
       return Right(AnimeMapper().fromListMap(maps: animes));

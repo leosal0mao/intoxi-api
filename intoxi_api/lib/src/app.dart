@@ -69,8 +69,7 @@ class MyApp extends StatelessWidget {
                         return const AnimeDetailsView();
                       case AnimesListView.routeName:
                       default:
-                        return AnimesListView(
-                            controller: StreamController<int>());
+                        return AnimesListView();
                     }
                   },
                 );
