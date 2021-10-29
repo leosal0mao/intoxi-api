@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intoxi_api/src/core/http/errors/http_errors.dart';
-import 'package:intoxi_api/src/core/http/http_adapter.dart';
+import '../../../core/http/errors/http_errors.dart';
 
 import '../data/anime_repository.dart';
 import 'anime_event.dart';

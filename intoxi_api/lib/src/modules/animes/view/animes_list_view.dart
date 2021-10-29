@@ -1,16 +1,13 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intoxi_api/src/modules/animes/widgets/bottom_loader_widget.dart';
 
 import '../../settings/settings_view.dart';
 import '../bloc/anime_bloc.dart';
 import '../bloc/anime_event.dart';
 import '../bloc/anime_state.dart';
 import '../dtos/anime_dto.dart';
-import '../models/models.dart';
 import '../widgets/anime_tile.dart';
+import '../widgets/bottom_loader_widget.dart';
 
 class AnimesListView extends StatefulWidget {
   AnimesListView({
@@ -84,7 +81,8 @@ class _AnimesListViewState extends State<AnimesListView> {
                       ? const BottomLoaderWidget()
                       : AnimeListTile(
                           animeId: state.animes![index].id.toString(),
-                          animeImage: state.animes![index].data.ogImage![0].url,
+                          animeImage: state.animes![index].data.ogImage![0].url
+                              .toString(),
                           animeTitle: state.animes![index].data.ogTitle,
                         );
                 });

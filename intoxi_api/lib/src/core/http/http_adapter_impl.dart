@@ -1,9 +1,7 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:intoxi_api/src/core/http/http_adapter.dart';
 
 import 'errors/http_errors.dart';
+import 'http_adapter.dart';
 
 class HttpAdapterImpl implements HttpAdapter {
   final String url;
