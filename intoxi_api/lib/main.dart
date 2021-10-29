@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'src/app.dart';
+import 'src/app_widget.dart';
 import 'src/modules/settings/settings_controller.dart';
 import 'src/modules/settings/settings_service.dart';
 
@@ -9,5 +9,5 @@ void main() async {
 
   await settingsController.loadSettings();
 
-  runApp(MyApp(settingsController: settingsController));
+  runApp(AppWidget(settingsController: settingsController));
 }

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../domain/dtos/dtos.dart';
 
-import '../../settings/settings_view.dart';
 import '../bloc/anime_bloc.dart';
-import '../bloc/anime_event.dart';
-import '../bloc/anime_state.dart';
-import '../dtos/anime_dto.dart';
+
 import '../widgets/anime_tile.dart';
 import '../widgets/bottom_loader_widget.dart';
 
 class AnimesListView extends StatefulWidget {
-  AnimesListView({
+  const AnimesListView({
     Key? key,
   }) : super(key: key);
 
@@ -103,14 +101,14 @@ class _AnimesListViewState extends State<AnimesListView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de Animes'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              Navigator.restorablePushNamed(context, SettingsView.routeName);
-            },
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.settings),
+        //     onPressed: () {
+        //       Navigator.restorablePushNamed(context, SettingsView.routeName);
+        //     },
+        //   ),
+        // ],
       ),
       body: body,
     );

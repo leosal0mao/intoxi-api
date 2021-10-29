@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'core/endpoints/intoxi_anime_url.dart';
+import 'core/helpers/endpoints/intoxi_anime_url.dart';
 import 'core/http/http_adapter_impl.dart';
-import 'modules/animes/bloc/anime_bloc.dart';
-import 'modules/animes/data/anime_repository_impl.dart';
-import 'modules/animes/view/animes_list_view.dart';
-import 'modules/animes/view/sample_item_details_view.dart';
+import 'modules/animes/domain/usecases/fetch_animes_usecase.dart';
+import 'modules/animes/external/datasources/anime_remote_datasource_impl.dart';
+import 'modules/animes/infra/repositories/anime_repository_impl.dart';
+import 'modules/animes/presenter/bloc/anime_bloc.dart';
+import 'modules/animes/presenter/view/animes_list_view.dart';
+import 'modules/animes/presenter/view/sample_item_details_view.dart';
 import 'modules/settings/settings_controller.dart';
 import 'modules/settings/settings_view.dart';
 
 /// The Widget that configures your application.
-class MyApp extends StatelessWidget {
-  const MyApp({
+class AppWidget extends StatelessWidget {
+  const AppWidget({
     Key? key,
     required this.settingsController,
   }) : super(key: key);
@@ -30,14 +32,20 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 HttpAdapterImpl(IntoxiAnimeUrl.restRoute, context.read<Dio>())),
         RepositoryProvider(
-            create: (context) =>
-                AnimeRepositoryImpl(client: context.read<HttpAdapterImpl>())),
+            create: (context) => AnimeRemoteDatasourceImpl(
+                client: context.read<HttpAdapterImpl>())),
+        RepositoryProvider(
+            create: (context) => AnimeRepositoryImpl(
+                dataSource: context.read<AnimeRemoteDatasourceImpl>())),
+        RepositoryProvider(
+            create: (context) => FetchAnimesUsecaseImpl(
+                repository: context.read<AnimeRepositoryImpl>())),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
               create: (context) =>
-                  AnimeBloc(context.read<AnimeRepositoryImpl>())),
+                  AnimeBloc(usecase: context.read<FetchAnimesUsecaseImpl>())),
         ],
         child: AnimatedBuilder(
           animation: settingsController,
@@ -67,7 +75,7 @@ class MyApp extends StatelessWidget {
                         return const AnimeDetailsView();
                       case AnimesListView.routeName:
                       default:
-                        return AnimesListView();
+                        return const AnimesListView();
                     }
                   },
                 );

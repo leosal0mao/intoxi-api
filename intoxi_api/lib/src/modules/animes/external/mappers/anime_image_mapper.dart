@@ -1,9 +1,10 @@
 import 'dart:convert';
 
+import '../../domain/entities/entities.dart';
 import '../helpers/errors/errors.dart';
-import '../models/models.dart';
 
 class AnimeImageMapper {
+  AnimeImageMapper._(); //construtor privado
   static AnimeImage fromMap(Map<String, dynamic> map) {
     try {
       return AnimeImage(

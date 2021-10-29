@@ -1,10 +1,13 @@
+import '../../domain/entities/entities.dart';
+
 import '../helpers/errors/errors.dart';
-import '../models/models.dart';
 
 import 'mappers.dart';
 
 class AnimeMapper {
-  Anime fromMap(Map<String, dynamic> map) {
+  AnimeMapper._(); // construtor privado
+
+  static Anime fromMap(Map<String, dynamic> map) {
     try {
       return Anime(
         id: map['id'],
@@ -15,7 +18,7 @@ class AnimeMapper {
     }
   }
 
-  List<Anime> fromListMap({required List<Map<String, dynamic>> maps}) {
+  static List<Anime> fromListMap({required List<Map<String, dynamic>> maps}) {
     try {
       return maps.map((map) => fromMap(map)).toList();
     } catch (e, stack) {

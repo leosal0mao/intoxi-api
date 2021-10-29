@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-import '../models/models.dart';
+part of 'anime_bloc.dart';
 
 abstract class AnimeState extends Equatable {}
 

@@ -18,7 +18,13 @@ class AnimeListTile extends StatelessWidget {
     return ListTile(
         title: Text('Id: $animeId'),
         subtitle: Text('$animeTitle'),
-        leading: CircleAvatar(backgroundImage: NetworkImage(animeImage!)),
+        leading: CircleAvatar(
+          child: Image.network(animeImage ?? '',
+              errorBuilder: (context, value, stackTrace) {
+            return const CircularProgressIndicator();
+          }),
+          // backgroundImage: NetworkImage('$animeImage!')
+        ),
         onTap: onTap);
   }
 }

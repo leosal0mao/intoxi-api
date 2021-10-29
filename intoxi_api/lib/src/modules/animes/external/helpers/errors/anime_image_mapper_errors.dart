@@ -1,4 +1,4 @@
-import 'package:intoxi_api/src/core/helpers/errors.dart';
+import '../../../../../core/helpers/errors/failure.dart';
 
 class AnimeImageMapperErrors extends Failure {
   AnimeImageMapperErrors(String message, StackTrace stackTrace)

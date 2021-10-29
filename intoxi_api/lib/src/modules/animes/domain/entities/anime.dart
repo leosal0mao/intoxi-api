@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import 'anime_data.dart';
-import 'models.dart';
+import 'entities.dart';
 
 class Anime extends Equatable {
   final int id;

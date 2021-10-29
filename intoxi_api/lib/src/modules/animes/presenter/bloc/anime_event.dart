@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import '../dtos/dtos.dart';
+part of 'anime_bloc.dart';
 
 abstract class AnimeEvent extends Equatable {}
 

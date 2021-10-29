@@ -1,4 +1,4 @@
-import '../../helpers/errors.dart';
+import '../../helpers/errors/failure.dart';
 
 class HttpError extends Failure {
   String? statusCode;

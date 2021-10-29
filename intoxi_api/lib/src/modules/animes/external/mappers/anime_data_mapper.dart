@@ -1,11 +1,11 @@
 import 'dart:convert';
 
+import '../../domain/entities/entities.dart';
 import '../helpers/errors/errors.dart';
-import '../models/models.dart';
-
 import 'mappers.dart';
 
 class AnimeDataMapper {
+  AnimeDataMapper._(); // construtor privado
   static AnimeData fromMap(Map<String, dynamic> map) {
     try {
       return AnimeData(
@@ -14,7 +14,7 @@ class AnimeDataMapper {
         ogImage: AnimeImageMapper.fromListMap(
             (map['og_image'] as List?)?.cast<Map<String, dynamic>>()),
       );
-    } on AnimeImageMapperErrors catch (e) {
+    } on AnimeImageMapperErrors {
       rethrow;
     } catch (e, stack) {
       throw AnimeDataMapperErrors(e.toString(), stack);
