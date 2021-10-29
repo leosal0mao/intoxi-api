@@ -5,8 +5,6 @@ class AnimeDetailsView extends StatelessWidget {
   const AnimeDetailsView({Key? key, this.animeDescription}) : super(key: key);
   final String? animeDescription;
 
-  static const routeName = '/anime_item';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

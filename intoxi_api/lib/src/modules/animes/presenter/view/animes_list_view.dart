@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intoxi_api/src/routes/app_pages.dart';
 import '../../domain/dtos/dtos.dart';
 
 import '../bloc/anime_bloc.dart';
@@ -11,8 +12,6 @@ class AnimesListView extends StatefulWidget {
   const AnimesListView({
     Key? key,
   }) : super(key: key);
-
-  static const routeName = '/';
 
   @override
   State<AnimesListView> createState() => _AnimesListViewState();
@@ -101,14 +100,15 @@ class _AnimesListViewState extends State<AnimesListView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de Animes'),
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.settings),
-        //     onPressed: () {
-        //       Navigator.restorablePushNamed(context, SettingsView.routeName);
-        //     },
-        //   ),
-        // ],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.restorablePushNamed(
+                  context, AppPages.animeItemDescription);
+            },
+          ),
+        ],
       ),
       body: body,
     );
